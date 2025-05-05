@@ -1,3 +1,17 @@
+# for data scraping
 selenium==4.20.0
 pandas==2.2.2
 webdriver-manager==4.0.1
+
+# For analysis
+pandas
+matplotlib
+seaborn
+numpy
+scikit-learn
+statsmodels
+
+# For Dashboard Design using Plotly Dash
+dash
+dash-bootstrap-components
+dash-ag-grid
