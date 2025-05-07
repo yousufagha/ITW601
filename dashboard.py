@@ -10,8 +10,7 @@ import plotly.express as px
 
 # Load dataset
 # df = pd.read_csv("enriched_jora_jobs_9000.csv")
-# df = pd.read_csv("cleaned_data.csv")
-df = pd.read_csv("cleaned_data_1.csv")
+df = pd.read_csv("cleaned_data.csv")
 
 # Handle Experience column
 def parse_experience(val):
