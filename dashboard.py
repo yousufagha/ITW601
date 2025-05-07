@@ -177,20 +177,25 @@ def update_visualizations(selected_states, selected_cities):
     exp_dist_fig = px.histogram(filtered_df, x='ParsedExperience', nbins=20, title="Experience Distribution")
     exp_dist_fig.update_layout(xaxis_title="Experience", yaxis_title="Count")
 
-    # Jobs by City
+    # Jobs by City - Top 5 only
     city_counts = filtered_df['City'].value_counts().reset_index()
     city_counts.columns = ['City', 'Count']
-    jobs_by_city_fig = px.bar(city_counts, x='City', y='Count', title="Jobs by City")
+    # Get only top 5 cities
+    city_counts = city_counts.head(5)
+    jobs_by_city_fig = px.bar(city_counts, x='City', y='Count', title="Top 5 Cities by Job Count")
 
     # Jobs by State
     state_counts = filtered_df['State'].value_counts().reset_index()
     state_counts.columns = ['State', 'Count']
     jobs_by_state_fig = px.bar(state_counts, x='State', y='Count', title="Jobs by State")
 
-    # Jobs by Company
+    # Jobs by Company - Top 10 only
     company_counts = filtered_df['Company'].value_counts().reset_index()
     company_counts.columns = ['Company', 'Count']
-    jobs_by_company_fig = px.bar(company_counts, x='Company', y='Count', title="Jobs by Company")
+    # Get only top 5 cities
+    company_counts = company_counts.head(10)
+    
+    jobs_by_company_fig = px.bar(company_counts, x='Company', y='Count', title="Top 10 Companies by Job Count")
     filtered_skills = filtered_df[['City', 'Skills']].dropna()
     filtered_skills['Skills'] = filtered_skills['Skills'].str.split(',')
     exploded_skills = filtered_skills.explode('Skills')
